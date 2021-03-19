@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "NanumSquare";
+  font-display: swap;
+  font-weight: 300;
+  src: url('./../src/assets/fonts/NanumSquareL.woff2') format('woff2'),
+       url('./../src/assets/fonts/NanumSquareL.woff') format('woff'),
+       url('./../src/assets/fonts/NanumSquareL.ttf') format('truetype'),
+       url('./../src/assets/fonts/NanumSquareL.otf') format('opentype');
+}
+
+@font-face {
+  font-family: "NanumSquare";
+  font-display: swap;
+  font-weight: 400;
+  src: url('./../src/assets/fonts/NanumSquareR.woff2') format('woff2'),
+       url('./../src/assets/fonts/NanumSquareR.woff') format('woff'),
+       url('./../src/assets/fonts/NanumSquareR.ttf') format('truetype'),
+       url('./../src/assets/fonts/NanumSquareR.otf') format('opentype');
+}
+
+@font-face {
+  font-family: "NanumSquare";
+  font-display: swap;
+  font-weight: 600;
+  src: url('./../src/assets/fonts/NanumSquareB.woff2') format('woff2'),
+       url('./../src/assets/fonts/NanumSquareB.woff') format('woff'),
+       url('./../src/assets/fonts/NanumSquareB.ttf') format('truetype'),
+       url('./../src/assets/fonts/NanumSquareB.otf') format('opentype');
+}
+
+@font-face {
+  font-family: "NanumSquare";
+  font-display: swap;
+  font-weight: 800;
+  src: url('./../src/assets/fonts/NanumSquareEB.woff2') format('woff2'),
+       url('./../src/assets/fonts/NanumSquareEB.woff') format('woff'),
+       url('./../src/assets/fonts/NanumSquareEB.ttf') format('truetype'),
+       url('./../src/assets/fonts/NanumSquareEB.otf') format('opentype');
+}
