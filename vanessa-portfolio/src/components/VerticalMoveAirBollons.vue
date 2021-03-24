@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="illust-container">
     <div class="illust-wrapper">
       <div class="sky-wrapper">
         <div class="sky-outset-box">
@@ -116,14 +116,14 @@
       loop() {
         this.mx += (this.x - this.mx) * 0.05;
         this.my += (this.y - this.my) * 0.05;
-        this.$refs.airballon1.style.transform = "translate("+(this.mx/20)+"px,"+(this.my/20)+"px) scale(0.8)";
-        this.$refs.airballon2.style.transform = "translate("+(this.mx/20)+"px,"+(-this.my/20)+"px) scale(0.8)";
-        this.$refs.airballon3.style.transform = "translate("+(-this.mx/20)+"px,"+(this.my/20)+"px) scale(0.8)";
-        this.$refs.airballon4.style.transform = "translate("+(this.mx/20)+"px,"+(this.my/20)+"px) scale(0.8)";
-        this.$refs.airballon5.style.transform = "translate("+(-this.mx/20)+"px,"+(-this.my/20)+"px) scale(0.8)";
-        this.$refs.airballon6.style.transform = "translate("+(this.mx/20)+"px,"+(this.my/20)+"px) scale(0.8)";
-        this.$refs.airballon7.style.transform = "translate("+(-this.mx/20)+"px,"+(-this.my/20)+"px) scale(0.8)";
-        this.$refs.airballon8.style.transform = "translate("+(this.mx/20)+"px,"+(this.my/20)+"px) scale(0.8)";
+        this.$refs.airballon1.style.transform = "translate("+(this.mx/25)+"px,"+(this.my/30)+"px) scale(0.8)";
+        this.$refs.airballon2.style.transform = "translate("+(this.mx/25)+"px,"+(-this.my/30)+"px) scale(0.8)";
+        this.$refs.airballon3.style.transform = "translate("+(-this.mx/25)+"px,"+(this.my/30)+"px) scale(0.8)";
+        this.$refs.airballon4.style.transform = "translate("+(this.mx/25)+"px,"+(this.my/30)+"px) scale(0.8)";
+        this.$refs.airballon5.style.transform = "translate("+(-this.mx/25)+"px,"+(-this.my/30)+"px) scale(0.8)";
+        this.$refs.airballon6.style.transform = "translate("+(this.mx/25)+"px,"+(this.my/30)+"px) scale(0.8)";
+        this.$refs.airballon7.style.transform = "translate("+(-this.mx/25)+"px,"+(-this.my/30)+"px) scale(0.8)";
+        this.$refs.airballon8.style.transform = "translate("+(this.mx/25)+"px,"+(this.my/30)+"px) scale(0.8)";
         window.requestAnimationFrame(this.loop);
       },
       mouseStop() {
@@ -141,6 +141,10 @@
 </script>
 
 <style lang="scss">
+.illust-container {
+  flex: 1;
+}
+
 // sky style
 .sky-wrapper {
   position: relative;
@@ -195,9 +199,8 @@
 // illust group style
 .illust-wrapper {
   position: relative;
-  width: 1100px;
+  min-width: 1000px;
   height: 100vh;
-  background-color: #eee;
   padding: 40px 200px;
   box-sizing: border-box;
   
@@ -206,28 +209,29 @@
     z-index: 10;
 
     &.cloud-1 {
-      top: 43%;
+      top: 50%;
       left: 80px;
 
     }
     &.cloud-2 {
-      top: 40%;
+      top: 46%;
       left: 160px;
       transform: scale(0.6);
       z-index: 9;
     }
     &.cloud-3 {
-      top: 33%;
-      right: 75px;
+      top: 36%;
+      right: 200px;
       transform: scale(0.45);
+      z-index: 1;
     }
     &.cloud-4 {
-      top: 42%;
-      right: 75px;
+      top: 48%;
+      right: 130px;
       transform: scale(0.6);
     }
     &.cloud-5 {
-      top: 50%;
+      top: 55%;
       right: 180px;
       transform: scale(0.6);
     }
@@ -247,12 +251,12 @@
   }
 
   .cancer {
-    left: 56%;
-    top: 220px;
+    left: 38%;
+    top: 210px;
   }
   .capricorn {
-    left: 26%;
-    top: 60px;
+    left: 22%;
+    top: 100px;
   }
   .moon {
     left: 60%;
@@ -369,59 +373,70 @@
   transform: rotateZ(0deg) scale(0.8);
   transition: all 0.3s;
   font-size: 0;
+  opacity: 0;
+  animation: fadein 0.7s ease-out 1.2s 1 forwards;
+
   &.ballon1 {
-    top: -20px;
+    top: -10px;
     left: 200px;
   }
   &.ballon2 {
-    top: 10px;
-    left: 480px;
+    top: -10px;
+    left: 500px;
   }
   &.ballon3 {
-    top: 60px;
-    left: 840px;
+    top: 180px;
+    left: 860px;
   }
   &.ballon4 {
-    top: 160px;
+    top: 240px;
     left: 20px;
     z-index: 9;
   }
   &.ballon5 {
-    top: 380px;
-    left: 350px;
+    top: 420px;
+    left: 340px;
   }
   &.ballon6 {
-    top: 240px;
-    left: 660px;
+    top: 330px;
+    left: 600px;
     z-index: 9;
   }
   &.ballon7 {
-    top: 580px;
-    left: 720px;
+    top: 590px;
+    left: 750px;
   }
   &.ballon8 {
-    top: 550px;
-    left: 80px;
+    top: 650px;
+    left: 130px;
   }
 }
 
 // air-ballon dangling style
 .dangling {
   transition: all 0.3s;
-  animation: dangling 0.6s ease-in-out 0s infinite;
+  animation: dangling 0.5s ease-in-out 0s infinite;
 }
 @keyframes dangling {
   25% {   
-    transform: rotateZ(10deg);
+    transform: rotateZ(5deg);
   }
   50% {
     transform: rotateZ(0deg);
   }
   75% {
-    transform: rotateZ(-10deg);
+    transform: rotateZ(-5deg);
   }
   100% {
     transform: rotateZ(0deg);
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>
