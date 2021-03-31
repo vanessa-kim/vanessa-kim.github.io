@@ -142,14 +142,15 @@
 
 <style lang="scss">
 .illust-container {
-  flex: 1;
+  height: 100vh;
+  max-height: 1000px;
 }
 
 // sky style
 .sky-wrapper {
   position: relative;
   width: 700px;
-  height: calc(100vh - 80px);
+  height: 100%;
   min-height: 700px;
   background: linear-gradient(0deg, #f4f6f6 25%, #8092b6);
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -200,7 +201,8 @@
 .illust-wrapper {
   position: relative;
   min-width: 1000px;
-  height: 100vh;
+  max-width: 1205px;
+  height: 100%;
   padding: 40px 200px;
   box-sizing: border-box;
   
@@ -386,7 +388,7 @@
   }
   &.ballon3 {
     top: 180px;
-    left: 860px;
+    left: 830px;
   }
   &.ballon4 {
     top: 240px;

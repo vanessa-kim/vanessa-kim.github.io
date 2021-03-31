@@ -5,8 +5,10 @@
         <img src="@/assets/img/img_logo.png" alt="vanessa kim logo" />
       </router-link>
     </h1>
-    <router-view></router-view>
-    <global-navigation class="global-nav-position"/>
+    <router-view
+      @update:page-active="handleMainActivePage"
+    ></router-view>
+    <global-navigation class="global-nav-position" :activePage="activePage"/>
   </div>
 </template>
 
@@ -17,6 +19,14 @@ export default {
   name: 'App',
   components: {
     GlobalNavigation,
+  },
+  data: () => ({
+    activePage: 'intro',
+  }),
+  methods: {
+    handleMainActivePage(page) {
+      this.activePage = page;
+    },
   },
 }
 </script>

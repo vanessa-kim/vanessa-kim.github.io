@@ -1,6 +1,7 @@
 <template>
-  <div class="home-container">
-    <div class="first-page">
+  <div class="home-container" @scroll="handleScrollActive" ref="wrap">
+    <div class="intro-page" id="intro" ref="test1">
+      <prev-button v-show="activePage !== 'intro'" :prevPage="prevPage"/>
       <div class="intro-wrap">
         <div class="home-intro">
           <h4>UI DESIGNER & FRONTEND DEVELOPER</h4>
@@ -16,28 +17,88 @@
             <b-button>
               WHO IS <strong>VANESSA?</strong>
               <i class="find-icon" />
+              <i class="custom-edge">
+                <span><span></span></span>
+              </i>
             </b-button>
           </div>
         </div>
       </div>
       <vertical-move-air-bollons />
+      <next-button v-if="activePage !== 'work'" :nextPage="nextPage"/>
+    </div>
+    <div class="who-wrap" id="who">
+      test2
+    </div>
+    <div class="work-wrap" id="work">
+      test3
     </div>
   </div>
 </template>
 
 <script>
-import VerticalMoveAirBollons from '@/components/VerticalMoveAirBollons.vue';
+import VerticalMoveAirBollons from '@/components/VerticalMoveAirBollons';
+import NextButton from '@/components/NextButton';
+import PrevButton from '@/components/PrevButton';
 export default {
   name: 'Home',
   components: {
     VerticalMoveAirBollons,
+    NextButton,
+    PrevButton,
+  },
+  data: () => ({
+    activePage: 'intro',
+    pages: ['intro', 'who', 'work'],
+  }),
+  computed: {
+    prevPage() {
+      const findIndex = this.pages.findIndex(page => page === this.activePage);
+      if(findIndex === -1 || findIndex === 0) return this.pages[0];
+      return this.pages[findIndex - 1]
+    },
+    nextPage() {
+      const findIndex = this.pages.findIndex(page => page === this.activePage);
+      if(findIndex === -1 || findIndex === 2) return this.pages[2];
+      return this.pages[findIndex + 1]
+    },
+  },
+  methods: {
+    handleScrollActive() {
+      const currentYOffset = this.$refs.wrap.scrollTop;
+      const elHeight = this.$refs.test1.offsetHeight;
+      const position = parseInt(currentYOffset / elHeight);
+
+      switch(position) {
+        case 0 :
+          this.$emit('update:page-active', 'intro');
+          this.activePage = 'intro';
+          return;
+        case 1 :
+          this.$emit('update:page-active', 'who');
+          this.activePage = 'who';
+          return;
+        default: 
+          this.$emit('update:page-active', 'work');
+          this.activePage = 'work'; 
+          return;
+      }
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.first-page {
+.home-container {
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+.intro-page {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .intro-wrap {
@@ -46,7 +107,9 @@ export default {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  padding: 90px;
+  padding: 90px 30px 90px 90px;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
 }
 
 .home-intro {
@@ -117,15 +180,16 @@ export default {
     }
 
     button {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 60px;
       line-height: 26px;
       border: 3px solid #293344;
-      background-color: transparent;
+      background-color: #fff;
       color: #212121;
-      padding: 0 20px;
+      padding: 0 30px 0 20px;
       border-radius: 0;
       box-sizing: border-box;
       margin: 0 20px 20px auto;
@@ -134,6 +198,18 @@ export default {
         display: inline-block;
         font-weight: 800;
         margin-left: 6px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        right: -16px;
+        bottom: -16px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #e9edf4;
+        z-index: -1;
       }
     }
   }
@@ -146,8 +222,8 @@ export default {
   height: 20px;
   border-radius: 30px;
   border: 3px solid #293344;
-  margin-left: 30px;
-  margin-bottom: 4px;
+  margin-left: 11px;
+  margin-bottom: 7px;
 
   &::before{
     content: '';
@@ -160,5 +236,52 @@ export default {
     background-color: #293344;
     transform: rotateZ(135deg);
   }
+}
+
+.custom-edge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background-color: #ffffff;
+  width: 23px;
+  height: 23px;
+  overflow: hidden;
+
+  & > span{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    border-top: 17px solid #2e2e19;
+    border-bottom: 17px solid transparent;
+    border-right: 17px solid transparent;
+    border-left: 17px solid transparent;
+    transform: rotate(45deg);
+
+    & > span {
+      position: absolute;
+      top: -14px;
+      left: -10px;
+      display: block;
+      width: 0px;
+      height: 0px;
+      border-top: 10px solid #bcc5d8;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-left: 10px solid transparent;
+    }
+  }
+}
+
+.who-wrap {
+  height: 100vh;
+  background-color: green;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+.work-wrap {
+  height: 100vh;
+  background-color: orange;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
 }
 </style>
