@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container" ref="wrap">
+  <div class="home-container" @scroll="handleScrollActive" ref="wrap">
     <div class="intro-page" id="intro" ref="page1">
       <prev-button v-show="activePage !== 'intro'" :prevPage="prevPage"/>
       <div class="intro-wrap">
@@ -66,51 +66,7 @@ export default {
       return this.pages[findIndex + 1]
     },
   },
-  mounted() {
-    this.$refs.wrap.addEventListener('scroll', this.throttle(this.smoothScroll), 100, { passive: false });
-  },
-  beforeDestroy() {
-    this.$refs.wrap.removeEventListener('scroll', this.smoothScroll, { passive: false });
-
-  },
   methods: {
-    throttle(callback, limit = 100) {
-      let waiting = false;
-      return function() {
-        if(!waiting) {
-          callback.apply(this, arguments);
-          waiting = true;
-          setTimeout(()=>{
-            waiting = false;
-          }, limit);
-        }
-      }
-    },
-
-    smoothScroll() {
-      this.handleScrollActive();
-
-      if(this.debounce) {
-        clearTimeout(this.debounce);
-      }
-      
-      const currentYOffset = this.$refs.wrap.scrollTop;
-      const elHeight = this.$refs.page1.offsetHeight;
-      const position = parseInt(currentYOffset / elHeight);
-      const scrollDirection = Math.sign(this.captureYPostion - currentYOffset); 
-
-      this.debounce = setTimeout(()=> {
-        this.captureYPostion = this.$refs.wrap.scrollTop;
-
-        this.$refs.wrap.scrollTo({
-          left: 0,
-          top: scrollDirection === -1 ? elHeight * (position + 1) : elHeight * position,
-          duration: 50
-        });
-      }, 100);
-
-    },
-
     handleScrollActive() {
       const currentYOffset = this.$refs.wrap.scrollTop;
       const elHeight = this.$refs.page1.offsetHeight;
@@ -138,7 +94,7 @@ export default {
 <style lang="scss" scoped>
 .home-container {
   height: 100vh;
-  // scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -156,8 +112,8 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 90px 30px 90px 90px;
-  // scroll-snap-align: start;
-  // scroll-snap-stop: normal;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
 }
 
 .home-intro {
