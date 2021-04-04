@@ -6,13 +6,16 @@
         <intro />
       </div>
       <vertical-move-air-bollons />
-      <next-button v-if="activePage !== 'work'" :nextPage="nextPage"/>
+      <next-button v-if="activePage !== 'contact'" :nextPage="nextPage"/>
     </div>
     <div class="who-wrap" id="who">
       <who />
     </div>
     <div class="work-wrap" id="work">
       test3
+    </div>
+    <div class="contact-wrap" id="contact">
+      <contact />
     </div>
   </div>
 </template>
@@ -23,6 +26,7 @@ import NextButton from '@/components/NextButton';
 import PrevButton from '@/components/PrevButton';
 import Intro from '@/views/home/Intro';
 import Who from '@/views/home/Who';
+import Contact from '@/views/home/Contact';
 
 export default {
   name: 'Home',
@@ -32,10 +36,11 @@ export default {
     PrevButton,
     Intro,
     Who,
+    Contact,
   },
   data: () => ({
     activePage: 'intro',
-    pages: ['intro', 'who', 'work'],
+    pages: ['intro', 'who', 'work', 'contact'],
     debounce: null,
     captureYPostion: null,
     move: false,
@@ -48,7 +53,7 @@ export default {
     },
     nextPage() {
       const findIndex = this.pages.findIndex(page => page === this.activePage);
-      if(findIndex === -1 || findIndex === 2) return this.pages[2];
+      if(findIndex === -1 || findIndex === 3) return this.pages[3];
       return this.pages[findIndex + 1]
     },
   },
@@ -67,9 +72,13 @@ export default {
           this.$emit('update:page-active', 'who');
           this.activePage = 'who';
           return;
-        default: 
+        case 2 : 
           this.$emit('update:page-active', 'work');
           this.activePage = 'work'; 
+          return;
+        default: 
+          this.$emit('update:page-active', 'contact');
+          this.activePage = 'contact'; 
           return;
       }
     },
@@ -108,7 +117,15 @@ export default {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
+
 .work-wrap {
+  height: 100vh;
+  background-color: orange;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+.contact-wrap {
   height: 100vh;
   background-color: orange;
   scroll-snap-align: start;

@@ -3,10 +3,11 @@
     <navigation-button class="nav-btn" />
 
     <div class="main-pagination">
-      <span>{{ pageNumber }}/3</span>
+      <span>{{ pageNumber }}/4</span>
       <a href="#intro" :class="['pagination-btn', { 'active' : isActive('intro') }]" title="Intro">◆</a>
       <a href="#who" :class="['pagination-btn', { 'active' : isActive('who') }]" title="Vanessa">◆</a>
       <a href="#work" :class="['pagination-btn', { 'active' : isActive('work') }]" title="Work">◆</a>
+      <a href="#contact" :class="['pagination-btn', { 'active' : isActive('contact') }]" title="Contact">◆</a>
     </div>
 
     <div class="sns_util">
@@ -44,8 +45,10 @@ export default {
           return 1;
         case 'who':
           return 2;
-        default:
+        case 'work':
           return 3;
+        default:
+          return 4;
       }
     },
   },
