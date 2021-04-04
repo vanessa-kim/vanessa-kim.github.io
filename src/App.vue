@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <h1 class="logo-home">
-      <router-link to="/">
+      <a v-if="isHome" href="#intro"  title="Home">
+        <img src="@/assets/img/img_logo.png" alt="vanessa kim logo" />
+      </a>
+      <router-link to="/" v-else>
         <img src="@/assets/img/img_logo.png" alt="vanessa kim logo" />
       </router-link>
     </h1>
@@ -23,9 +26,17 @@ export default {
   data: () => ({
     activePage: 'intro',
   }),
+  computed: {
+    isHome() {
+      return this.$route.name === 'home';
+    }
+  },
   methods: {
     handleMainActivePage(page) {
       this.activePage = page;
+    },
+    test() {
+      console.log('test');
     },
   },
 }
@@ -40,7 +51,9 @@ export default {
   position: absolute;
   left: 20px;
   top: 20px;
+  z-index: 100;
 }
+
 .global-nav-position {
   position: fixed;
   top: 0;

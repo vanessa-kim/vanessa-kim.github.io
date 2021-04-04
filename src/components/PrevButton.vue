@@ -52,13 +52,14 @@ export default {
   width: 1px;
   height: 30px;
   background: linear-gradient(to top, rgba(41, 51, 68, 0), rgba(41, 51, 68, 1));
+  animation: bright_line_bottom_to_top  1s 0.3s linear infinite;
 }
-@keyframes bright_line {
+@keyframes bright_line_bottom_to_top {
   0% {
     margin-top:60px;
   }
   100% {
-    margin-top:-24px;
+    margin-top:-100px;
   }  
 }
 </style>

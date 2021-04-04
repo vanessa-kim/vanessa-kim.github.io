@@ -52,9 +52,9 @@ export default {
   width: 1px;
   height: 30px;
   background: linear-gradient(to bottom, rgba(41, 51, 68, 0), rgba(41, 51, 68, 1));
-  animation: bright_line  1s 0.3s linear infinite;
+  animation: bright_line_top_to_bottom  1s 0.3s linear infinite;
 }
-@keyframes bright_line {
+@keyframes bright_line_top_to_bottom {
   0% {
     margin-bottom:100px;
   }
