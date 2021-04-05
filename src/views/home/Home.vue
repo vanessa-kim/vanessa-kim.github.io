@@ -8,11 +8,11 @@
       <vertical-move-air-bollons />
       <next-button v-if="activePage !== 'contact'" :nextPage="nextPage"/>
     </div>
-    <div class="who-wrap" id="who">
-      <who />
-    </div>
     <div class="work-wrap" id="work">
-      test3
+      <work />
+    </div>
+    <div class="work-wrap" id="art">
+      <art />
     </div>
     <div class="contact-wrap" id="contact">
       <contact />
@@ -25,7 +25,8 @@ import VerticalMoveAirBollons from '@/components/VerticalMoveAirBollons';
 import NextButton from '@/components/NextButton';
 import PrevButton from '@/components/PrevButton';
 import Intro from '@/views/home/Intro';
-import Who from '@/views/home/Who';
+import Work from '@/views/home/Work';
+import Art from '@/views/home/Art';
 import Contact from '@/views/home/Contact';
 
 export default {
@@ -35,12 +36,13 @@ export default {
     NextButton,
     PrevButton,
     Intro,
-    Who,
+    Work,
+    Art,
     Contact,
   },
   data: () => ({
     activePage: 'intro',
-    pages: ['intro', 'who', 'work', 'contact'],
+    pages: ['intro', 'work', 'art', 'contact'],
     debounce: null,
     captureYPostion: null,
     move: false,
@@ -68,13 +70,13 @@ export default {
           this.$emit('update:page-active', 'intro');
           this.activePage = 'intro';
           return;
-        case 1 :
-          this.$emit('update:page-active', 'who');
-          this.activePage = 'who';
-          return;
-        case 2 : 
+        case 1 : 
           this.$emit('update:page-active', 'work');
           this.activePage = 'work'; 
+          return;
+        case 2 : 
+          this.$emit('update:page-active', 'art');
+          this.activePage = 'art'; 
           return;
         default: 
           this.$emit('update:page-active', 'contact');
@@ -111,16 +113,16 @@ export default {
   scroll-snap-stop: normal;
 }
 
-.who-wrap {
+.work-wrap {
   height: 100vh;
   padding: 90px 70px;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
 
-.work-wrap {
+.art-wrap {
   height: 100vh;
-  background-color: orange;
+  background-color: red;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }

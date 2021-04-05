@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="who-header">
+    <div class="work-header">
       <div class="work-years">
         <span>2015</span>
         <span>2021</span>
       </div>
     </div>
-    <div class="home-form who">
+    <div class="home-form work">
       <h4>DESIGN & FRONT WEB DEVELOPER</h4>
       <h1>WORK</h1>
       <div class="home-description">
@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: 'Who',
+  name: 'Work',
   data: () => {
     return {
       workList: [
@@ -81,7 +81,7 @@ export default {
 </script>
 
 <style lang="scss">
-.who-header {
+.work-header {
   display: flex;
 
   .work-years {
@@ -112,7 +112,7 @@ export default {
   }
 }
 
-.home-form.who {
+.home-form.work {
   h4 {
     padding: 15px 0;
     
