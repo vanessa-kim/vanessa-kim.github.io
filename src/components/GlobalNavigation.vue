@@ -3,11 +3,9 @@
     <navigation-button class="nav-btn" />
 
     <div class="main-pagination">
-      <span>{{ pageNumber }}/4</span>
-      <a href="#intro" :class="['pagination-btn', { 'active' : isActive('intro') }]" title="Intro">◆</a>
-      <a href="#work" :class="['pagination-btn', { 'active' : isActive('work') }]" title="Work">◆</a>
-      <a href="#art" :class="['pagination-btn', { 'active' : isActive('art') }]" title="Art">◆</a>
-      <a href="#contact" :class="['pagination-btn', { 'active' : isActive('contact') }]" title="Contact">◆</a>
+      <a href="#intro" :class="['pagination-btn', { 'active' : isActive('intro') }]" title="Intro">●</a>
+      <a href="#work" :class="['pagination-btn', { 'active' : isActive('work') }]" title="Work">●</a>
+      <a href="#contact" :class="['pagination-btn', { 'active' : isActive('contact') }]" title="Contact">●</a>
     </div>
 
     <div class="sns_util">
@@ -39,18 +37,6 @@ export default {
     snsImage() {
       return { backgroundImage: `url(${require('@/assets/img/ico_sns.png')})` };
     },
-    pageNumber() {
-      switch(this.activePage) {
-        case 'intro':
-          return 1;
-        case 'work':
-          return 2;
-        case 'art':
-          return 3;
-        default:
-          return 4;
-      }
-    },
   },
   methods: {
     isActive(page) {
@@ -79,7 +65,7 @@ export default {
   align-items: center;
   
   span {
-    font-size: 12px;
+    font-size: 10px;
     line-height: 30px;
   }
 
@@ -96,7 +82,7 @@ export default {
       color: #293344;
     }
     &.active {
-      font-size: 18px;
+      font-size: 16px;
       color: #293344;
     }
   }

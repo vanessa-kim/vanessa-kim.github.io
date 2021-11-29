@@ -1,5 +1,6 @@
 <template>
   <div>
+    Art
     <div class="insta-feed-group" v-if="instaFeed">
       <div v-for="(post, index) in instaFeed" :key="post.id" class="post-box">
         <img :src="post.media_url" :alt="`illust-${index}`" width="100px" height="100px">
@@ -35,11 +36,14 @@ export default {
     async getInstaFeed() {
       this.initFeed();
       try {
-        const url = 'https://graph.instagram.com/me/media';
-        const fieldsParams = 'id,media_type,caption,media_url,username,timestamp';
-        const access_token = 'IGQVJYQW14VTJQSmZAKZAXdQeG9PNUp5bjBoNW10M3NnbTBEZAWNiMnBiZADNYU01JUl9mbzlPM3paMElKUDFQU0p4VVR5NE40WWY5WnZAxQk5TZAW1fQXFDanEtYWs3TTBtRHNETnBkTDZAkaXVndTBfMVlkRAZDZD';
-        const query = `${url}?fields=${fieldsParams}&access_token=${access_token}`;
+        const url = 'https://graph.instagram.com';
+        const id = '506331047168263';
+        const fieldsParams = 'id';
+        const access_token = 'de42f963756c8ac738a5cd79933014c5';
+        const query = `${url}/${id}?fields=${fieldsParams}&access_token=${access_token}`;
         const res = await client.get(query);
+
+        console.log('res',res);
 
         this.instaFeed = res.data.data.filter((item, index) => {
           if(index < 12) return item;

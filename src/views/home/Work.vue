@@ -3,21 +3,18 @@
     <div class="work-header">
       <div class="work-years">
         <span>2015</span>
-        <span>2021</span>
+        <span>2022</span>
       </div>
     </div>
     <div class="home-form work">
-      <h4>DESIGN & FRONT WEB DEVELOPER</h4>
-      <h1>WORK</h1>
+      <h1>Portfolio</h1>
       <div class="home-description">
-        <h6>PORTFOLIO</h6>
         <p>
           디자인 시안 작업을 포함해서, 반응형웹, 하이브리드앱, 모바일앱 플랫폼에 최적화된 홈페이지 작업을 통해 <br/>
 고객의 니즈르 충실하게 수행하여 성공적인 비지니스가 되도록 최선을 다하고 있습니다. 
         </p>
         <b-button>
-          SEE MORE <strong>WORK?</strong>
-          <img src="@/assets/img/ico_edit.png" alt="work icon" />
+          See more <strong>Work</strong>
           <i class="custom-edge">
             <span><span></span></span>
           </i>
@@ -113,26 +110,16 @@ export default {
 }
 
 .home-form.work {
-  h4 {
-    padding: 15px 0;
-    
-    &:before {
-     top: 4px;
-   }
-  }
 
   h1 {
-    font-size: 60px;
-    line-height: 60px;
+    font-size: 80px;
+    line-height: 80px;
     margin-bottom: 20px;
   }
 
   .home-description {
-    button {
-      margin: 0 auto;
-    }
     p{
-      text-align: center;
+      text-align: left;
     }
   }
 }

@@ -41,6 +41,7 @@ export default {
   transition: all 1s;
   cursor: pointer;
   border:1px solid #293344;
+  border-radius: 30px;
   box-shadow: 10px 10px 10px #29334433;
   box-sizing: border-box;
   z-index: 100;

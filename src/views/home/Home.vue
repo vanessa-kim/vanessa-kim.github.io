@@ -11,9 +11,6 @@
     <div class="work-wrap" id="work">
       <work />
     </div>
-    <div class="work-wrap" id="art">
-      <art />
-    </div>
     <div class="contact-wrap" id="contact">
       <contact />
     </div>
@@ -26,7 +23,6 @@ import NextButton from '@/components/NextButton';
 import PrevButton from '@/components/PrevButton';
 import Intro from '@/views/home/Intro';
 import Work from '@/views/home/Work';
-import Art from '@/views/home/Art';
 import Contact from '@/views/home/Contact';
 
 export default {
@@ -37,7 +33,6 @@ export default {
     PrevButton,
     Intro,
     Work,
-    Art,
     Contact,
   },
   data: () => ({
@@ -74,10 +69,6 @@ export default {
           this.$emit('update:page-active', 'work');
           this.activePage = 'work'; 
           return;
-        case 2 : 
-          this.$emit('update:page-active', 'art');
-          this.activePage = 'art'; 
-          return;
         default: 
           this.$emit('update:page-active', 'contact');
           this.activePage = 'contact'; 
@@ -107,29 +98,22 @@ export default {
   min-width: 700px;
   height: 100vh;
   justify-content: center;
-  align-items: center;
-  padding: 90px 30px 90px 90px;
+  align-items: flex-start;
+  padding: 170px 30px 190px 0px;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
 
 .work-wrap {
   height: 100vh;
-  padding: 90px 70px;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
-}
-
-.art-wrap {
-  height: 100vh;
-  background-color: red;
+  padding: 90px 145px;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
 
 .contact-wrap {
-  height: 100vh;
-  background-color: orange;
+  height: 28vh;
+  // background-color: orange;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
